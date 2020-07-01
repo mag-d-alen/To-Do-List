@@ -50,6 +50,9 @@ app.get('/work', (req, res) => {
     res.render("list.ejs", {listTitle:"WORK", addedItems:workItemsArray}); 
 });
 
+app.get("/about", (req, res) => {
+res.render("about.ejs")
+})
 
 ///starting the local server
 
