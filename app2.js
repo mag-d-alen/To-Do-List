@@ -44,6 +44,9 @@ app.post('/', (req, res) => {
 });
 
 
+app.get("/about", (req, res) => {
+res.render("about.ejs")
+})
 
 ///starting the local server
 
