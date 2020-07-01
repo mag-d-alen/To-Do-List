@@ -36,9 +36,6 @@ switch (currentDay) {
 res.render("list.ejs", {kindOfDay: day}); //this is a js object. key: matches with variable from ejs , vaue is the value of the variable day
 });
 
-/* app.post('/', (req, res) => {
-    res.bodyParser
-}); */
 
 
 
