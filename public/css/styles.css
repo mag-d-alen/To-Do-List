@@ -11,9 +11,11 @@ body {
 }
 div{
   display:flex;
+  justify-content: center;
 }
 
 h1 {
+   
   color: #fff;
   padding: 10px;
 }

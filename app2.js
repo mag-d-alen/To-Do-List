@@ -4,6 +4,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+const date = require(__dirname+"/date.js");
 const itemsArray = []; //created to solve problem of scope for app.post
 const workItemsArray = [];
 
@@ -15,27 +16,20 @@ const workItemsArray = [];
 app.set("view engine", "ejs");
 
 app.get('/', (req, res) => {
-    let today = new Date();
-    const options = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    };
-    let day = today.toLocaleDateString(undefined, options);
-    res.render("list.ejs", { listTitle: day, addItems: itemsArray });
+let day = date.getDate();
+    res.render("list.ejs", { title: day, addItems: itemsArray });
 });
 
 app.get('/work', (req, res) => {
-    res.render("list.ejs", { listTitle: "WORK", addItems: workItemsArray });
+    res.render("list.ejs", { title: "WORK", addItems: workItemsArray });
 });
 
 
 app.post('/', (req, res) => {
-    let input = req.body.addItems;
+    let input = req.body.addItems;   
     if (req.body.list === "WORK") {
         workItemsArray.push(input);
-        res.redirect("/work")
+        res.redirect("/work");
     }
     else {
         itemsArray.push(input);
